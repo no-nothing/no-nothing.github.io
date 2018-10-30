@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-a-common/algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-common/algorithm.html" class="article-date">
+  <time datetime="2017-08-12T08:50:00.000Z" itemprop="datePublished">2017-08-12</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Common/">Common</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/a-common/algorithm.html">算法相关</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p>常见的时间复杂度有：</p>
+<ul>
+<li>常数阶 <code>O(1)</code></li>
+<li>对数阶 <code>O(logN)</code></li>
+<li>线性阶 <code>O(n)</code></li>
+<li>线性对数阶 <code>O(nlogN)</code></li>
+<li>平方阶 <code>O(n^2)</code></li>
+<li>立方阶 <code>O(n^3)</code></li>
+<li>!k 次方阶 <code>O(n^k)</code></li>
+<li>指数阶 <code>O(2^n)</code></li>
+</ul>
+<p>随着问题规模 n 的不断增大，上述时间复杂度不断增大，算法的执行效率越低。</p>
+        
+          <p class="article-more-link">
+            <a href="/a-common/algorithm.html#more">查看更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-common/algorithm.html" data-id="cjnvx9ydc000elxu6r8x9twjv" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-a-js/bind-call-apply" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-js/bind-call-apply.html" class="article-date">
+  <time datetime="2017-08-11T03:30:00.000Z" itemprop="datePublished">2017-08-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/a-js/bind-call-apply.html">bind call apply</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
+<li><code>func.bind(thisArg[, arg1[, arg2[, ...]]])</code>，返回值：返回由指定的 <code>this</code> 值和初始化参数改造的原函数拷贝；</li>
+<li><code>func.call(thisArg[, arg1[, arg2[, ...]]])</code>，返回值：无返回值；</li>
+<li><code>func.apply(thisArg[, argsArray])</code>，返回值：无返回值；</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/a-js/bind-call-apply.html#more">查看更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-js/bind-call-apply.html" data-id="cjnvx9ydr001flxu6e0c1cz2u" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apply/">apply</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bind/">bind</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/call/">call</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-a-js/array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-js/array.html" class="article-date">
+  <time datetime="2017-06-07T14:10:00.000Z" itemprop="datePublished">2017-06-07</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/a-js/array.html">JavaScript 常用数组操作</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h2><ol>
+<li><p>instanceof 关键字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"><span class="keyword">let</span> flag = arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/a-js/array.html#more">查看更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-js/array.html" data-id="cjnvx9ydq001blxu6rghgsewo" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-a-git/index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-git/index.html" class="article-date">
+  <time datetime="2017-05-31T07:20:00.000Z" itemprop="datePublished">2017-05-31</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/a-git/index.html">Git 常用命令</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="生成-SSH-keys"><a href="#生成-SSH-keys" class="headerlink" title="生成 SSH keys"></a>生成 SSH keys</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 SSH keys 是否存在</span></span><br><span class="line">ls -al ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成新的 SSH key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"rocco.mormont@gmail.com"</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/a-git/index.html#more">查看更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-git/index.html" data-id="cjnvx9ydo0014lxu6mw7ltgzn" class="article-share-link">分享</a>
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-a-linux/pause" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-linux/pause.html" class="article-date">
+  <time datetime="2017-05-28T10:10:00.000Z" itemprop="datePublished">2017-05-28</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/a-linux/pause.html">说明（2017-05-28）</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="暂停-“运维”-生涯（😀）"><a href="#暂停-“运维”-生涯（😀）" class="headerlink" title="暂停 “运维” 生涯（😀）"></a>暂停 “运维” 生涯（😀）</h2><p>断断续续 20 多天的时间终于部署好了自己的服务器。</p>
+<p>从 <em>5 月 6 号</em> 在腾讯云下单服务器；到 <em>5 月 12 日</em> 购买域名（<a href="https://www.singple.com" target="_blank" rel="noopener">singple.com</a>）；到部署 Github Pages 到自己的服务器；再到复习/学习 Linux 基本操作；再到开启 HTTPS，HTTP2。</p>
+<p>中间查了多少资料自己都记不清了，这些资料主要涉及 Nginx，HTTPS，HTTP2，Linux make 安装软件，在开启 HTTP2 的时候服务器还重装了几次系统（强迫症和洁癖，😭）。</p>
+<p><a href="https://www.singple.com/linux/server.html" target="_blank" rel="noopener">这里</a>有完整的配置记录，欢迎查看和指正。</p>
+<p>专心前端，GO.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-linux/pause.html" data-id="cjnvx9ye2001zlxu6albtyx97" class="article-share-link">分享</a>
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
+  </nav>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+  <script>
+  /*
+   * 注册 Service Worker
+   * 附加：
+   * Chrome 输入 chrome://inspect/#service-workers 可以查看 Service Worker 是否已启用
+   * Chrome 输入 chrome://serviceworker-internals 可以查看 Service Worker 详情
+   */
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js', { scope: '/' })
+      .then(registration => {
+        console.log('Service Worker 注册成功，域名: ', registration.scope);
+      })
+      .catch(error => {
+        console.log('Service Worker 注册失败: ', error);
+      });
+  }
+</script>
+
+  
+</body>
+</html>

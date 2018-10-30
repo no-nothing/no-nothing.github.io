@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>npm &amp; yarn | Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-a-node/yarn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-node/yarn.html" class="article-date">
+  <time datetime="2017-11-08T04:30:00.000Z" itemprop="datePublished">2017-11-08</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Node/">Node</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      npm &amp; yarn
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://yarnpkg.com/zh-Hans/docs/install" target="_blank" rel="noopener">安装 yarn</a></p>
+<a id="more"></a>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">npm</th>
+<th style="text-align:left">yarn</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>npm init</code></td>
+<td style="text-align:left"><code>yarn init</code></td>
+<td style="text-align:left">初始化项目</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm i</code></td>
+<td style="text-align:left"><code>yarn install</code> 或 <code>yarn</code></td>
+<td style="text-align:left">安装依赖包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>rm -rf node_modules &amp;&amp; npm i</code></td>
+<td style="text-align:left"><code>yarn upgrade</code></td>
+<td style="text-align:left">重新安装依赖包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm i [package] -S</code></td>
+<td style="text-align:left"><code>yarn add [package]</code></td>
+<td style="text-align:left">安装生产依赖包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm i [package] -D</code></td>
+<td style="text-align:left"><code>yarn add [package] -D</code></td>
+<td style="text-align:left">安装开发依赖包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm i [package] -g</code></td>
+<td style="text-align:left"><code>yarn global add [package]</code></td>
+<td style="text-align:left">全局安装包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm update -g</code></td>
+<td style="text-align:left"><code>yarn global upgrade</code></td>
+<td style="text-align:left">全局更新包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm uninstall [package] -S</code></td>
+<td style="text-align:left"><code>yarn remove [package]</code></td>
+<td style="text-align:left">移除生产依赖包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm uninstall [package] -D</code></td>
+<td style="text-align:left"><code>yarn remove [package]</code></td>
+<td style="text-align:left">移除开发依赖包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm cache clean</code></td>
+<td style="text-align:left"><code>yarn cache clean</code></td>
+<td style="text-align:left">清缓存</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm list -g --depth=0</code></td>
+<td style="text-align:left"><code>yarn global list</code></td>
+<td style="text-align:left">查看全局安装的包</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm login/logout/publish</code></td>
+<td style="text-align:left"><code>yarn login/logout/publish</code></td>
+<td style="text-align:left">登录/登出/发布</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm config list</code></td>
+<td style="text-align:left"><code>yarn config list</code></td>
+<td style="text-align:left">查看全局配置</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm config get registry</code></td>
+<td style="text-align:left"><code>yarn config get registry</code></td>
+<td style="text-align:left">查看源（全局）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm config set registry http://r.cnpmjs.org/</code></td>
+<td style="text-align:left"><code>yarn config set registry https://registry.yarnpkg.com</code></td>
+<td style="text-align:left">设置源（全局）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>npm help</code></td>
+<td style="text-align:left"><code>yarn help</code></td>
+<td style="text-align:left">帮助</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1-依赖包安装慢"><a href="#1-依赖包安装慢" class="headerlink" title="1. 依赖包安装慢"></a>1. 依赖包安装慢</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更换淘宝源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者 npm 下使用 nrm</span></span><br><span class="line">npm i nrm -g</span><br><span class="line"><span class="comment"># 查看源</span></span><br><span class="line">nrm ls</span><br><span class="line"><span class="comment"># 测试源的延迟</span></span><br><span class="line">nrm <span class="built_in">test</span></span><br><span class="line"><span class="comment"># 使用速度最快的源（这里演示使用 taobao）</span></span><br><span class="line">nrm use taobao</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者 yarn 下使用 yrm</span></span><br><span class="line">yarn global add yrm</span><br><span class="line"><span class="comment"># 查看源</span></span><br><span class="line">yrm ls</span><br><span class="line"><span class="comment"># 测试源的延迟</span></span><br><span class="line">yrm <span class="built_in">test</span></span><br><span class="line"><span class="comment"># 使用速度最快的源（这里演示使用 taobao）</span></span><br><span class="line">yrm use taobao</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装-puppeteer-node-sass-phantomjs-失败"><a href="#2-安装-puppeteer-node-sass-phantomjs-失败" class="headerlink" title="2. 安装 puppeteer node-sass phantomjs 失败"></a>2. 安装 puppeteer node-sass phantomjs 失败</h3><p><strong>1. npm</strong></p>
+<p>项目根目录下增加 .npmrc 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">puppeteer_download_host=https://npm.taobao.org/mirrors/</span><br><span class="line">sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line">phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs/</span><br></pre></td></tr></table></figure>
+<p>或者，修改 npm 全局配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置 puppeteer taobao源</span></span><br><span class="line">npm config <span class="built_in">set</span> puppeteer_download_host https://npm.taobao.org/mirrors/</span><br><span class="line"><span class="comment"># 设置 node-sass taobao源</span></span><br><span class="line">npm config <span class="built_in">set</span> sass_binary_site https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line"><span class="comment"># 设置 phantomjs taobao源</span></span><br><span class="line">npm config <span class="built_in">set</span> phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/</span><br><span class="line"><span class="comment"># 查看 config 信息</span></span><br><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+<p><strong>2. yarn</strong></p>
+<p>yarn 没有类似于 .npmrc 的配置文件，只能修改 yarn 全局配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置 puppeteer taobao源</span></span><br><span class="line">yarn config <span class="built_in">set</span> puppeteer_download_host https://npm.taobao.org/mirrors/</span><br><span class="line"><span class="comment"># 设置 node-sass taobao源</span></span><br><span class="line">yarn config <span class="built_in">set</span> sass_binary_site https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line"><span class="comment"># 设置 phantomjs taobao源</span></span><br><span class="line">yarn config <span class="built_in">set</span> phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/</span><br><span class="line"><span class="comment"># 查看 config 信息</span></span><br><span class="line">yarn config list</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-node/yarn.html" data-id="cjnvx9ye50026lxu66g6a0e07" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yarn/">yarn</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/a-pwa/sw.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Service Worker - PWA
+        
+      </div>
+    </a>
+  
+  
+    <a href="/a-js/js-detail.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">细说 JavaScript</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+</body>
+</html>

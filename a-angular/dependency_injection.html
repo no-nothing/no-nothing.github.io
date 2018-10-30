@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>Angular 入门：依赖注入 | Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-a-angular/dependency_injection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-angular/dependency_injection.html" class="article-date">
+  <time datetime="2017-09-22T15:30:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Angular/">Angular</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Angular 入门：依赖注入
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是依赖注入"><a href="#什么是依赖注入" class="headerlink" title="什么是依赖注入"></a>什么是依赖注入</h3><ol>
+<li>依赖注入: Dependency Injection 简称 DI</li>
+<li>控制反转: Inversion of Control 简称 IOC</li>
+</ol>
+<blockquote>
+<p>实现了 “控制反转” 模式的框架被称为 IOC 容器, Angular 是一个 IOC 容器, Angular 实现 “控制反转” 的手段是 “依赖注入”.</p>
+</blockquote>
+<h3 id="依赖注入的优点"><a href="#依赖注入的优点" class="headerlink" title="依赖注入的优点"></a>依赖注入的优点</h3><ol>
+<li>松耦合, 可重用性.</li>
+<li>提高可测性.</li>
+</ol>
+<a id="more"></a>
+<h3 id="注入器"><a href="#注入器" class="headerlink" title="注入器"></a>注入器</h3><p>Angular “依赖注入” 的注入点只有一个: <code>constructor</code>.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> folderService: FolderService</span></span><br><span class="line"><span class="params"></span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="手动使用注入器"><a href="#手动使用注入器" class="headerlink" title="手动使用注入器"></a>手动使用注入器</h4><p><em>仅供理解时使用这种方式, 实际开发中不用.</em></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> folderService: FolderService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> injector: Injector</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">this</span>.folderService = injector.get(FolderService);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="注入器的层级关系"><a href="#注入器的层级关系" class="headerlink" title="注入器的层级关系"></a>注入器的层级关系</h4><ol>
+<li><p>应用级注入器(AppModule)</p>
+</li>
+<li><p>主组件注入器(AppComponent)</p>
+</li>
+<li><p>子组件注入器(ChildComponent)</p>
+</li>
+</ol>
+<h3 id="提供器"><a href="#提供器" class="headerlink" title="提供器"></a>提供器</h3><p>在 <code>module</code> 或 <code>component</code> 里指定 <code>providers</code> 来告诉 Angular 哪些对象需要 “依赖注入”.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  providers: [FolderService] <span class="comment">// 等同: providers: [&#123;provide: FolderService, useClass: FolderService&#125;]</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// providers 其他写法:</span></span><br><span class="line"><span class="comment">// providers: [&#123;provide: FolderService, useClass: AnotherFolderService&#125;]</span></span><br><span class="line"><span class="comment">// providers: [&#123;provide: FolderService, useFactory:() =&gt; &#123;...&#125;&#125;]</span></span><br></pre></td></tr></table></figure>
+<h4 id="提供器的作用域"><a href="#提供器的作用域" class="headerlink" title="提供器的作用域"></a>提供器的作用域</h4><ol>
+<li>“提供器” 可以声明在模块(module)和组件(component)里.</li>
+<li>当一个 “提供器” 声明在模块里时, 该 “提供器” 对当前模块下的所有组件可见.</li>
+<li>当一个 “提供器” 声明在组件里时, 该 “提供器” 只对当前组件及其当前组件下的所有子组件可见.</li>
+<li>使用 “提供器” 时遵循就近原则, 如果名字(token)相同, 会优先使用组件内声明的.</li>
+<li>优先考虑声明到模块内.</li>
+</ol>
+<h4 id="工厂函数-“提供器”"><a href="#工厂函数-“提供器”" class="headerlink" title="工厂函数 “提供器”"></a>工厂函数 “提供器”</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  providers: [</span><br><span class="line">    &#123;</span><br><span class="line">      provide: FolderService,</span><br><span class="line">      newFactory: <span class="function">(<span class="params">isDev, appConfig</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// appConfig -&gt; &#123;isDev: false&#125;</span></span><br><span class="line">        <span class="keyword">if</span> (isDev) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> FolderService();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// 由于 IS_DEV_ENV 为 false, 所以永远执行这里</span></span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> AnotherFolderService();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      deps: [<span class="string">'IS_DEV_ENV'</span>, <span class="string">'APP_CONFIG'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; provide: <span class="string">'IS_DEV_ENV'</span>, useValue: <span class="literal">false</span> &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      provide: <span class="string">'APP_CONFIG'</span>, useValue: &#123;isDev: <span class="literal">false</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
+<li>在 “注入器” 里注入 <code>FolderService</code>, Angular 会去 “提供器” 里寻找同名的对象, 如: <code>provide</code> 对应的 <code>FolderService</code>, 然后 <code>new</code> 一个 <code>useClass</code> 对应的 <code>FolderService</code> 注入到被调用的地方.</li>
+</ol>
+<h3 id="Injectable-装饰器"><a href="#Injectable-装饰器" class="headerlink" title="@Injectable 装饰器"></a>@Injectable 装饰器</h3><ol>
+<li><code>@Injectable()</code> 装饰器表示当前服务可以注入其他服务, 并不是说当前服务可以注入到其他服务里.</li>
+<li>想在 服务 A 里注入 服务 B, 需要将 服务 B 声明在共同的父模块里.</li>
+<li><code>@Component()</code> 装饰器继承自 <code>@Injectable()</code>, 所以在组件里也可以注入其他服务.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-angular/dependency_injection.html" data-id="cjnvx9yd8000alxu6t1kv3ddx" class="article-share-link">分享</a>
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/a-angular/form.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Angular 入门：表单
+        
+      </div>
+    </a>
+  
+  
+    <a href="/a-angular/route.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Angular 入门：路由</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+</body>
+</html>

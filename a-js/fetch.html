@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>Fetch API | Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-a-js/fetch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-js/fetch.html" class="article-date">
+  <time datetime="2018-04-17T13:50:00.000Z" itemprop="datePublished">2018-04-17</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Fetch API
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Fetch API 是近年来被提及将要取代 XHR 的技术新标准，是一个 HTML5 的 API。<br>Fetch 并不是 XHR 的升级版本，而是从一个全新的角度来思考的一种设计。</p>
+</blockquote>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;Response&gt; fetch(input[, init]);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><strong>input 定义要获取的资源</strong></p>
+<ul>
+<li>一个  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/USVString" target="_blank" rel="noopener"><code>USVString</code></a>  字符串，包含要获取资源的 URL。一些浏览器会接受  <code>blob:</code>  和  <code>data:</code>  作为 schemes。</li>
+<li>一个  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Request" target="_blank" rel="noopener"><code>Request</code></a>  对象。</li>
+</ul>
+<p><strong>init 配置项对象（可选）</strong></p>
+<ul>
+<li><code>method</code>：请求使用的方法，如  <code>GET</code>、<code>POST</code>。</li>
+<li><code>headers</code>：请求的头信息，形式为  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Headers" target="_blank" rel="noopener"><code>Headers</code></a>  的对象或包含  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ByteString" target="_blank" rel="noopener"><code>ByteString</code></a>  值的对象字面量。</li>
+<li><code>body</code>：请求的 body 信息：可能是一个  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob" target="_blank" rel="noopener"><code>Blob</code></a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/BufferSource" target="_blank" rel="noopener"><code>BufferSource</code></a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData" target="_blank" rel="noopener"><code>FormData</code></a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams" target="_blank" rel="noopener"><code>URLSearchParams</code></a>  或者  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/USVString" target="_blank" rel="noopener"><code>USVString</code></a>  对象。注意 GET 或 HEAD 方法的请求不能包含 body 信息。</li>
+<li><code>mode</code>：请求的模式<ul>
+<li>cors：允许跨域，要求响应中 <code>Acess-Control-Allow-Origin</code> 这样的头部表示允许跨域。</li>
+<li>no-cors：只允许使用 <code>HEAD</code>、<code>GET</code>、<code>POST</code> 方法。</li>
+<li>same-origin：只允许同源请求，否则直接报错。</li>
+<li>navigate：支持页面导航。</li>
+</ul>
+</li>
+<li><code>credentials</code>：表示是否发送 cookie<ul>
+<li>omit：不发送 cookie。</li>
+<li>same-origin：仅在同源时发送 cookie。</li>
+<li>include：发送 cookie。</li>
+</ul>
+</li>
+<li><code>cache</code>：表示处理缓存的策略，请求的 cache 模式: <code>default</code>、 <code>no-store 、</code> <code>reload 、</code> <code>no-cache 、</code> <code>force-cache</code>或者  <code>only-if-cached 。</code></li>
+<li><code>redirect</code>：表示发生重定向时，可用的 redirect 模式<ul>
+<li><code>follow</code>：自动重定向。</li>
+<li><code>error</code>：如果产生重定向将自动终止并且抛出一个错误。</li>
+<li><code>manual</code>：手动处理重定向。在 Chrome 中，Chrome 47 之前的默认值是 follow，从 Chrome 47 开始是 manual。</li>
+</ul>
+</li>
+<li><code>referrer</code>：一个  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/USVString" title="USVString 对应于所有可能的 unicode标量值序列的集合。" target="_blank" rel="noopener"><code>USVString</code></a>  可以是  <code>no-referrer</code>、<code>client</code> 或一个  URL。默认是  <code>client</code>。</li>
+<li><code>integrity</code>：包含一个用于验证资资源完整性的字符串。</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><strong>GET:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'/some/url'</span>, &#123; <span class="attr">method</span>: <span class="string">'GET'</span> &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 成功</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Request success: '</span>, response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 出问题了</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Request failure: '</span>, error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>POST:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'/some/url'</span>, &#123;</span><br><span class="line">  method: <span class="string">'POST'</span>,</span><br><span class="line">  headers: &#123; <span class="attr">token</span>: <span class="string">'123456'</span> &#125;,</span><br><span class="line">  body: <span class="built_in">JSON</span>.stringfy(&#123; <span class="attr">name</span>: <span class="string">'rocco'</span>, <span class="attr">password</span>: <span class="string">'rocco_123'</span> &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Request success: '</span>, response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Request failure: '</span>, error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://aotu.io/notes/2017/04/10/fetch-API/index.html" target="_blank" rel="noopener">了解 Fetch API</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/fetch" target="_blank" rel="noopener">WorkerOrGlobalScope.fetch() - MDN</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-js/fetch.html" data-id="cjnvx9ydt001mlxu6xhto2me5" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fetch/">fetch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwa/">pwa</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/a-js/caches.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Cache API
+        
+      </div>
+    </a>
+  
+  
+    <a href="/a-pwa/manifest.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">应用清单 - PWA</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+</body>
+</html>

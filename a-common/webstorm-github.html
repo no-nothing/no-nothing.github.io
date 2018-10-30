@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>WebStorm 开启 GitHub 支持 | Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-a-common/webstorm-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-common/webstorm-github.html" class="article-date">
+  <time datetime="2017-03-12T08:50:00.000Z" itemprop="datePublished">2017-03-12</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Common/">Common</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WebStorm 开启 GitHub 支持
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>教程前提：1. 本机安装 WebStorm；2. 拥有 GitHub 账号。</em></p>
+<h2 id="一、本机安装-Git"><a href="#一、本机安装-Git" class="headerlink" title="一、本机安装 Git"></a>一、本机安装 Git</h2><ol>
+<li><a href="https://git-scm.com/download" target="_blank" rel="noopener">Git 下载地址</a>。</li>
+<li>根据您的操作系统选择对应的 Git 版本。</li>
+<li>下载完成后，左键双击安装包，然后一直选择 Next 直到完成安装。</li>
+<li>安装完成后，可以在系统的程序列表中看到 Git Bash、Git CMD、Git GUI 三个快捷方式。</li>
+</ol>
+<p><strong>附加：</strong> <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Git 官方中文教程</a>，Git 进阶必备。</p>
+<a id="more"></a>
+<h2 id="二、创建-SSH-密钥并添加到-GitHub"><a href="#二、创建-SSH-密钥并添加到-GitHub" class="headerlink" title="二、创建 SSH 密钥并添加到 GitHub"></a>二、创建 SSH 密钥并添加到 GitHub</h2><h3 id="1-创建-SSH-密钥"><a href="#1-创建-SSH-密钥" class="headerlink" title="1. 创建 SSH 密钥"></a>1. 创建 SSH 密钥</h3><ol>
+<li>点击系统程序列表中的 Git Bash 快捷方式，打开 Git Bash。</li>
+<li><p>在打开的 Bash 界面内输入如下命令，将 <a href="mailto:your_email@example.com" target="_blank" rel="noopener">your_email@example.com</a> 换成您登陆 GitHub 的邮箱，单击回车键；</p>
+<p><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></p>
+</li>
+<li><p>Bash 界面内有提示就按回车键，连按 3 次。</p>
+</li>
+</ol>
+<h3 id="2-将-SSH-密钥添加到-GitHub"><a href="#2-将-SSH-密钥添加到-GitHub" class="headerlink" title="2. 将 SSH 密钥添加到 GitHub"></a>2. 将 SSH 密钥添加到 GitHub</h3><ol>
+<li>在 “C:\Users\xxx(计算机用户名).ssh\” 目录下找到 id_rsa.pub 文件，记事本打开，复制里面的内容。</li>
+<li><p>打开您的 GitHub，鼠标点击 <strong>自己的头像 –&gt; Settings –&gt; SSH and GPG keys –&gt; New SSH key</strong>，在打开的界面内：</p>
+<ul>
+<li><strong>Title</strong> 可以随意定义</li>
+<li><strong>Key</strong> 将上面复制的内容粘贴到这里</li>
+<li>点击 <strong>Add SSH key</strong> 按钮完成 SSH 密钥添加</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、在-WebStorm-中添加-GitHub-账号"><a href="#三、在-WebStorm-中添加-GitHub-账号" class="headerlink" title="三、在 WebStorm 中添加 GitHub 账号"></a>三、在 WebStorm 中添加 GitHub 账号</h2><h3 id="1-打开-WebStorm，然后使用快捷键-Ctrl-Alt-S-打开设置窗口"><a href="#1-打开-WebStorm，然后使用快捷键-Ctrl-Alt-S-打开设置窗口" class="headerlink" title="1. 打开 WebStorm，然后使用快捷键 Ctrl+Alt+S 打开设置窗口"></a>1. 打开 WebStorm，然后使用快捷键 <code>Ctrl+Alt+S</code> 打开设置窗口</h3><h3 id="2-选择-Version-Control-Git"><a href="#2-选择-Version-Control-Git" class="headerlink" title="2. 选择 Version Control | Git"></a>2. 选择 <strong>Version Control | Git</strong></h3><p><img src="/images/article/webstorm_01.jpg" alt="配置 Git"></p>
+<ol>
+<li><p>上图中的 <strong>Path to Git executable</strong> 为启用本地的 Git，点击 <strong>Path to Git executable</strong> 输入框后的 <code>···</code> 按钮，选择本机已安装的 <code>git.exe</code>；</p>
+<p><strong>说明：</strong> 例如我的 Git 安装在 “D:” 盘，所以选择的目录为 “D:\Program Files\Git\bin\git.exe”<br><strong>注意：</strong> “git.exe” 在 “bin” 目录下</p>
+</li>
+<li><p>点击 <strong>Test</strong> 按钮，弹出 <strong>Git executed successfully</strong> 提示，窗证明已成功添加 “git.exe”。</p>
+</li>
+</ol>
+<h3 id="3-选择-Version-Control-GitHub"><a href="#3-选择-Version-Control-GitHub" class="headerlink" title="3. 选择 Version Control | GitHub"></a>3. 选择 <strong>Version Control | GitHub</strong></h3><p><img src="/images/article/webstorm_02.jpg" alt="添加 GitHub 账号"></p>
+<ol>
+<li><p>上图中的 <strong>Auth Type</strong> 为 GitHub 密码认证类型。</p>
+<ul>
+<li><strong>Password</strong> 如果选择该选项并且您的 GitHub 帐户设置中启用了<a href="https://help.github.com/articles/about-two-factor-authentication/" target="_blank" rel="noopener">two-factor authentication</a>，则每次 WebStorm 需要登录到 GitHub 时，系统都会要求您输入密码。</li>
+<li><strong>Token</strong> GitHub 推荐的第三方应用认证方式，这种方式不需要 WebStorm 记住您的密码。</li>
+</ul>
+</li>
+<li><p>我选择的是 <strong>Password</strong>，然后输入自己的 GitHub 登陆邮箱和密码。</p>
+</li>
+<li>点击 <strong>Test</strong> 按钮，弹出 <strong>Success</strong> 提示窗，证明已成功添加 GitHub 账号。</li>
+<li>点击 WebStorm 设置窗口右下角的 <strong>OK</strong> 或者 <strong>Apply</strong> 按钮，保存设置。</li>
+</ol>
+<h2 id="四、从-GitHub-上克隆代码"><a href="#四、从-GitHub-上克隆代码" class="headerlink" title="四、从 GitHub 上克隆代码"></a>四、从 GitHub 上克隆代码</h2><p><img src="/images/article/webstorm_02.jpg" alt="从 GitHub 上克隆代码"></p>
+<ol>
+<li>如上图所示，点击 <strong>Check out from Version Control</strong> 然后选择 GitHub 选项。</li>
+<li><p>在弹出的 <strong>Clone Repository</strong> 提示窗内：</p>
+<ul>
+<li><strong>Git Repository URL</strong> 您 GitHub 上的一个仓库地址，点击 <strong>蓝色下拉按钮</strong> 能看到您 GitHub 上所有的仓库，鼠标点击可以切换到任意仓库，点击 <strong>Test</strong> 按钮，弹出 <strong>Test Connection</strong> 提示窗，提示 success *** 的话证明已成功连接到 GitHub 仓库。</li>
+<li><strong>Parent Diretory</strong> 您想保存到本机的位置，手动输入绝对路径或者点击输入框后的 <code>···</code> 按钮选择目录。</li>
+<li><strong>Directory Name</strong> 存放项目的目录名称，这里 WebStorm 默认会使用您选择的 GitHub 仓库的名字。</li>
+<li>点击 <strong>Clone</strong> 按钮克隆仓库。</li>
+</ul>
+</li>
+</ol>
+<p><strong>说明：</strong> 例如我的 <strong>Parent Diretory</strong> 设置为 “E:\GitHub”，<strong>Directory Name</strong> 设置为 “gulp”，最后会将我 GitHub 上的 “gulp” 仓库克隆到本地的 “E:\GitHub\gulp\” 目录下。</p>
+<h2 id="五、将本地项目上传至-GitHub"><a href="#五、将本地项目上传至-GitHub" class="headerlink" title="五、将本地项目上传至 GitHub"></a>五、将本地项目上传至 GitHub</h2><ol>
+<li>WebStorm 界面左侧，项目目录中鼠标左键单击选中需要上传的项目文件夹。</li>
+<li>点击 WebStorm 工具栏上的 <strong>VCS</strong>，选择 <strong>Import into Version Control –&gt; Share Project on GitHub</strong>。</li>
+<li><p>在弹出的 <strong>Share Project on GitHub</strong> 提示窗内输入相关信息，点击 <strong>Share</strong> 按钮。</p>
+<ul>
+<li><strong>New repository name</strong> 仓库名称。</li>
+<li><strong>Remote name</strong> 未知，这里我设置它跟 <strong>New repository name</strong> 同名。</li>
+<li><strong>Description</strong> 对仓库的描述。</li>
+</ul>
+</li>
+<li><p>在弹出的 <strong>Add Files For Initial Commit</strong> 提示窗内点击 <strong>OK</strong> 按钮。</p>
+</li>
+<li>在弹出的 <strong>Push Commits</strong> 提示窗内点击 <strong>PUSH</strong> 按钮。</li>
+<li>若 WebStorm 右下角提示上传失败，点击 WebStorm 工具栏上的 <strong>VCS</strong>，选择 <strong>Commit Changes</strong>，在弹出的 <strong>Commit Changes</strong> 提示窗内：勾选项目下所有要提交的文件，在 <strong>Commit Message</strong> 中添加本次提交的说明（必填），鼠标移动到 <strong>Commit</strong> 按钮上，点击 <strong>Commit and Push…</strong>，然后在弹出的 <strong>Push Commits</strong> 提示窗内点击 <strong>PUSH</strong> 按钮。</li>
+</ol>
+<p><strong>说明：</strong>VCS:(Version control system)，版本控制。</p>
+<h2 id="六、修改代码后上传"><a href="#六、修改代码后上传" class="headerlink" title="六、修改代码后上传"></a>六、修改代码后上传</h2><p><strong>同：</strong> 五、将本地项目上传至 GitHub 6. <strong>Commit Changes</strong>。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
+<li><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="noopener">Generating a new SSH key and adding it to the ssh-agent</a></li>
+<li><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" target="_blank" rel="noopener">Adding a new SSH key to your GitHub account</a></li>
+<li><a href="https://gist.github.com/yisibl/8019693" target="_blank" rel="noopener">如何创建公钥</a></li>
+<li><a href="http://www.jianshu.com/p/752613f4b1c9" target="_blank" rel="noopener">使用 webstorm 上传代码到 github</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-common/webstorm-github.html" data-id="cjnvx9ydj000slxu6sqjkqxaw" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webstorm/">webstorm</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/a-js/es6.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          ECMAScript 6 入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/a-js/regex.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">正则表达式</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+</body>
+</html>

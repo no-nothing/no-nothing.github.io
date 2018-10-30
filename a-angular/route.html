@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>Angular 入门：路由 | Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-a-angular/route" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-angular/route.html" class="article-date">
+  <time datetime="2017-09-22T12:30:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Angular/">Angular</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Angular 入门：路由
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Routes-对象"><a href="#Routes-对象" class="headerlink" title="Routes 对象"></a>Routes 对象</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes: Routes = [</span><br><span class="line">  &#123; path: <span class="string">''</span>, redirectTo: <span class="string">'/home'</span>, pathMatch: <span class="string">'full'</span> &#125;,</span><br><span class="line">  &#123; path: <span class="string">'home'</span>, component: HomeComponent &#125;,</span><br><span class="line">  &#123; path: <span class="string">'folder'</span>, component: FolderComponent &#125;,</span><br><span class="line">  &#123; path: <span class="string">'**'</span>, component: Code404Component &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>说明：</strong></p>
+<ol>
+<li>当用户访问根目录时会被重定向至 <code>/home</code> 页面;</li>
+<li>通配符路由 <code>{path: &#39;**&#39;, component: Code404Component}</code>, 页面不存在时跳转至 <code>Code404Component</code> 组件, 放在路由对象数组的最后面;</li>
+</ol>
+<h2 id="routeLink-指令"><a href="#routeLink-指令" class="headerlink" title="routeLink 指令"></a>routeLink 指令</h2><ol>
+<li>template 内 <code>[routeLink]</code> 的参数是一个数组, 例如 <code>&lt;a [routeLink]=&quot;[&#39;/&#39;]&quot;&gt;Home&lt;/a&gt;</code>;</li>
+</ol>
+<h2 id="Router-对象"><a href="#Router-对象" class="headerlink" title="Router 对象"></a>Router 对象</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> router: Router</span></span><br><span class="line"><span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">clickRoute() &#123;</span><br><span class="line">  <span class="comment">// 导航至根目录</span></span><br><span class="line">  <span class="keyword">this</span>.router.navigate([<span class="string">'/folder'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="路由时传递数据"><a href="#路由时传递数据" class="headerlink" title="路由时传递数据"></a>路由时传递数据</h2><h3 id="在查询参数中传递数据"><a href="#在查询参数中传递数据" class="headerlink" title="在查询参数中传递数据"></a>在查询参数中传递数据</h3><p><strong>1. 传入数据</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routeLink</span>]=<span class="string">"['/folder']"</span> [<span class="attr">queryParams</span>]=<span class="string">"&#123;id: '1'&#125;"</span>&gt;</span>Folder<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>点击 “Folder” 链接时, 页面 URL 中会显示 “查询参数”, 如: <code>/folder?id=1</code>;</p>
+<p><strong>2. 获取数据</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件夹 id</span></span><br><span class="line"><span class="keyword">private</span> folderId: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> routeInfo: ActivateRoute</span></span><br><span class="line"><span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">ngOnInit() &#123;</span><br><span class="line">  <span class="keyword">this</span>.folderId = <span class="keyword">this</span>.routeInfo.snapshot.queryParams[<span class="string">'id'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在路由路径中传递数据"><a href="#在路由路径中传递数据" class="headerlink" title="在路由路径中传递数据"></a>在路由路径中传递数据</h3><p><strong>1. 修改 routes 对象</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes: Routes = [</span><br><span class="line">  &#123; path: <span class="string">''</span>, redirectTo: <span class="string">'/home'</span>, pathMatch: <span class="string">'full'</span> &#125;,</span><br><span class="line">  &#123; path: <span class="string">'home'</span>, component: HomeComponent &#125;,</span><br><span class="line">  &#123; path: <span class="string">'folder/:id'</span>, component: FolderComponent &#125;,</span><br><span class="line">  &#123; path: <span class="string">'**'</span>, component: Code404Component &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p><strong>2. 传入数据</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routeLink</span>]=<span class="string">"['/folder', '1']"</span>&gt;</span>Folder<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>点击 “Folder” 链接时, 页面 URL 为: <code>/folder/1</code>;</p>
+<p><strong>3. 获取数据</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件夹 id</span></span><br><span class="line"><span class="keyword">private</span> folderId: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> routeInfo: ActivateRoute</span></span><br><span class="line"><span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">ngOnInit() &#123;</span><br><span class="line">  <span class="comment">// 参数快照(只会在组件创建时赋值一次)</span></span><br><span class="line">  <span class="keyword">this</span>.folderId = <span class="keyword">this</span>.routeInfo.snapshot.params[<span class="string">'id'</span>];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 参数订阅(路由变化就会触发赋值)</span></span><br><span class="line">  <span class="keyword">this</span>.routeInfo.params.subscribe(<span class="function">(<span class="params">params: Params</span>) =&gt;</span> <span class="keyword">this</span>.folderId = params[<span class="string">'id'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在路由配置中传递数据"><a href="#在路由配置中传递数据" class="headerlink" title="在路由配置中传递数据"></a>在路由配置中传递数据</h3><p><strong>1. 传入数据</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> router: Router</span></span><br><span class="line"><span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">clickRoute() &#123;</span><br><span class="line">  <span class="comment">// 导航至根目录</span></span><br><span class="line">  <span class="keyword">this</span>.router.navigate([<span class="string">'/folder'</span>, <span class="string">'1'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>触发 <code>clickRoute</code> 函数后, 页面 URL 为: <code>/folder/1</code></p>
+<h2 id="子路由"><a href="#子路由" class="headerlink" title="子路由"></a>子路由</h2><h3 id="routes-配置"><a href="#routes-配置" class="headerlink" title="routes 配置"></a>routes 配置</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes: Routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'home'</span>,</span><br><span class="line">    component: HomeComponent,</span><br><span class="line">    children: [&#123; path: <span class="string">'profile'</span>, component: profileComponent &#125;, &#123; path: <span class="string">'setting'</span>, component: SettingComponent &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<h3 id="routerLink"><a href="#routerLink" class="headerlink" title="routerLink"></a>routerLink</h3><ol>
+<li>routerLink 要用相对路径 <code>./</code>, 如: <code>&lt;a [routeLink]=&quot;[&#39;./setting&#39;]&quot;&gt;Home&lt;/a&gt;</code>;</li>
+</ol>
+<h2 id="辅助路由"><a href="#辅助路由" class="headerlink" title="辅助路由"></a>辅助路由</h2><h3 id="outlet"><a href="#outlet" class="headerlink" title="outlet"></a>outlet</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 命名辅助路由 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-outlet</span> <span class="attr">name</span>=<span class="string">"aux"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="routes"><a href="#routes" class="headerlink" title="routes"></a>routes</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;path: <span class="string">'path1'</span>, component: Component1, outlet: <span class="string">'aux'</span>&#125;,</span><br><span class="line">&#123;path: <span class="string">'path2'</span>, component: Component2, outlet: <span class="string">'aux'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="routerLink-1"><a href="#routerLink-1" class="headerlink" title="routerLink"></a>routerLink</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routeLink</span>]=<span class="string">"['/home', &#123;outlets: &#123;aux: 'path1'&#125;&#125;]"</span>&gt;</span>path1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routeLink</span>]=<span class="string">"['/folder', &#123;outlets: &#123;aux: 'path2'&#125;&#125;]"</span>&gt;</span>path2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
+<li><code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> 主插槽会显示 <code>home</code> 对应的组件, 同时 <code>&lt;router-outlet name=&quot;aux&quot;&gt;&lt;/router-outlet&gt;</code> 插槽会显示 <code>path1</code> 对应的组件;</li>
+</ol>
+<h2 id="路由守卫-路由钩子"><a href="#路由守卫-路由钩子" class="headerlink" title="路由守卫(路由钩子)"></a>路由守卫(路由钩子)</h2><h3 id="常用类型"><a href="#常用类型" class="headerlink" title="常用类型"></a>常用类型</h3><ol>
+<li>CanActivate: 处理导航到某路由的情况.</li>
+<li>CanDeactivate: 处理从当前路由离开的情况.</li>
+<li>Resolve: 在路由激活之前请求服务器获取数据.</li>
+</ol>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes: Routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'folder'</span>,</span><br><span class="line">    component: FolderComponent,</span><br><span class="line">    canActivate: [LoginGuard],</span><br><span class="line">    CanDeactivate: [UnsavedGuard],</span><br><span class="line">    resolve: &#123;</span><br><span class="line">      folder: FolderResolve</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  ...,</span><br><span class="line">  providers: [LoginGuard, UnsavedGuard, FolderResolve]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当使用 <code>resolve</code> 时, 可以在组件内接受数据 <code>Resolve</code> 守卫返回的数据.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据订阅(路由变化就会触发赋值)</span></span><br><span class="line"><span class="keyword">this</span>.routeInfo.data.subscribe(<span class="function">(<span class="params">data: &#123; folder: Folder &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.folderId = data.folder[<span class="string">'id'</span>];</span><br><span class="line">  <span class="keyword">this</span>.folderName = data.folder[<span class="string">'name'</span>];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-angular/route.html" data-id="cjnvx9yd9000blxu6jxoelizy" class="article-share-link">分享</a>
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/a-angular/dependency_injection.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Angular 入门：依赖注入
+        
+      </div>
+    </a>
+  
+  
+    <a href="/a-angular/base.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Angular 入门：基础介绍</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+</body>
+</html>

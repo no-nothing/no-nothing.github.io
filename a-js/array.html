@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>JavaScript 常用数组操作 | Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-a-js/array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-js/array.html" class="article-date">
+  <time datetime="2017-06-07T14:10:00.000Z" itemprop="datePublished">2017-06-07</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript 常用数组操作
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h2><ol>
+<li><p>instanceof 关键字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"><span class="keyword">let</span> flag = arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>Array.isArray() 方法<br><strong>注意：</strong> 只支持 ie9+，firefox 4+，safari 5+，opera 10.5+ 和 chrome。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"><span class="keyword">let</span> flag = <span class="built_in">Array</span>.isArray(arr); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不要使用 <code>typeof</code> 关键字</p>
+</li>
+</ol>
+<h2 id="获取元素在数组中的索引-indexOf-lastIndexOf"><a href="#获取元素在数组中的索引-indexOf-lastIndexOf" class="headerlink" title="获取元素在数组中的索引 indexOf / lastIndexOf"></a>获取元素在数组中的索引 indexOf / lastIndexOf</h2><ol>
+<li><code>indexOf()</code>：从数组的开头（位置 0）开始向后查找，返回第一个匹配值的索引。</li>
+<li><code>lastIndexOf()</code>：从数组的末尾开始向前查找，返回第一个匹配值的索引。</li>
+</ol>
+<p>这两个方法都返回查找的项在数组中的位置（索引），或者在没找到的情况下返回-1。\<br>在比较第一个参数与数组中的每一项时会使用 <strong>全等操作符</strong>，也就是说，要求查找的项必须严格相等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Strawberry'</span>, <span class="string">'Banana'</span>, <span class="string">'Mango'</span>, <span class="string">'apple'</span>, <span class="string">'Banana'</span>];</span><br><span class="line"><span class="keyword">let</span> index1 = fruits.indexOf(<span class="string">'Banana'</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">let</span> index2 = fruits.lastIndexOf(<span class="string">'Banana'</span>); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h2 id="删除指定位置的元素-splice"><a href="#删除指定位置的元素-splice" class="headerlink" title="删除指定位置的元素 splice"></a>删除指定位置的元素 splice</h2><p><strong>说明：</strong> splice: 拼接；接合；使结婚。</p>
+<p><code>arr.splice(position, count)</code>：从第 <code>position</code> 个元素起，删除 <code>count</code> 个元素，改变原数组。</p>
+<p><code>splice()</code> 方法始终都会返回一个数组，该数组中包含从原始数组中删除的项（如果没有删除任何项，则会返回一个空数组）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vegetables = [<span class="string">'Cabbage'</span>, <span class="string">'Turnip'</span>, <span class="string">'Radish'</span>, <span class="string">'Carrot'</span>];</span><br><span class="line"><span class="keyword">let</span> pos = <span class="number">1</span>,</span><br><span class="line">  n = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> removedItems = vegetables.splice(pos, n);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(vegetables); <span class="comment">// ["Cabbage", "Carrot"] (the original array is changed)</span></span><br><span class="line"><span class="built_in">console</span>.log(removedItems); <span class="comment">// ["Turnip", "Radish"]</span></span><br></pre></td></tr></table></figure>
+<h2 id="将元素插入到指定位置-splice"><a href="#将元素插入到指定位置-splice" class="headerlink" title="将元素插入到指定位置 splice"></a>将元素插入到指定位置 splice</h2><p><code>arr.splice(position, 0, item)</code>：从第 <code>position</code> 个元素起，删除 0 个元素，插入 <code>item</code>，改变原数组。</p>
+<p><code>splice()</code> 方法始终都会返回一个数组，该数组中包含从原始数组中删除的项（如果没有删除任何项，则会返回一个空数组）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myFish = [<span class="string">'angel'</span>, <span class="string">'clown'</span>, <span class="string">'mandarin'</span>, <span class="string">'surgeon'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> removed = myFish.splice(<span class="number">2</span>, <span class="number">0</span>, <span class="string">'drum'</span>);</span><br><span class="line"><span class="comment">//运算后的 myFish 为 ["angel", "clown", "drum", "mandarin", "surgeon"]</span></span><br><span class="line"><span class="comment">//被删除元素数组 removed 为 []，没有元素被删除</span></span><br></pre></td></tr></table></figure>
+<h2 id="替换指定位置的元素-splice"><a href="#替换指定位置的元素-splice" class="headerlink" title="替换指定位置的元素 splice"></a>替换指定位置的元素 splice</h2><p><code>arr.splice(position, 1, item)</code>：从第 <code>position</code> 个元素起，删除 1 个元素，插入 <code>item</code>，改变原数组。</p>
+<p><code>splice()</code> 方法始终都会返回一个数组，该数组中包含从原始数组中删除的项（如果没有删除任何项，则会返回一个空数组）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myFish = [<span class="string">'angel'</span>, <span class="string">'clown'</span>, <span class="string">'mandarin'</span>, <span class="string">'surgeon'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> removed = myFish.splice(<span class="number">2</span>, <span class="number">1</span>, <span class="string">'drum'</span>);</span><br><span class="line"><span class="comment">//运算后的 myFish 为 ["angel", "clown", "drum", "mandarin", "surgeon"]</span></span><br><span class="line"><span class="comment">//被删除元素数组 removed 为 []，没有元素被删除</span></span><br></pre></td></tr></table></figure>
+<h2 id="复制数组"><a href="#复制数组" class="headerlink" title="复制数组"></a>复制数组</h2><ol>
+<li>通过数组的 <code>slice()</code> 方法（浅复制）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Strawberry'</span>, <span class="string">'Banana'</span>, <span class="string">'Mango'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 浅复制</span></span><br><span class="line"><span class="keyword">let</span> shallowCopy = fruits.slice();</span><br></pre></td></tr></table></figure>
+<ol>
+<li>通过 <code>JSON.stringify()</code> 和 <code>JSON.parse()</code> 方法（深复制）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Strawberry'</span>, <span class="string">'Banana'</span>, <span class="string">'Mango'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深复制</span></span><br><span class="line"><span class="keyword">let</span> deepCopy = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(fruits));</span><br></pre></td></tr></table></figure>
+<h2 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h2><ol>
+<li>toString</li>
+</ol>
+<p><strong>注意：</strong> 不要使用 <code>toLocalString</code>，存在不确定性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Strawberry'</span>, <span class="string">'Banana'</span>, <span class="string">'Mango'</span>];</span><br><span class="line"><span class="keyword">let</span> str = fruits.toString(); <span class="comment">// "Strawberry,Banana,Mango"</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>join</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Strawberry'</span>, <span class="string">'Banana'</span>, <span class="string">'Mango'</span>];</span><br><span class="line"><span class="keyword">let</span> str = fruits.join(<span class="string">','</span>); <span class="comment">// "Strawberry,Banana,Mango"</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><h3 id="反序-reverse"><a href="#反序-reverse" class="headerlink" title="反序 reverse"></a>反序 reverse</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Strawberry'</span>, <span class="string">'Banana'</span>, <span class="string">'Mango'</span>];</span><br><span class="line">fruits.reverse();</span><br><span class="line"><span class="built_in">console</span>.log(fruits); <span class="comment">// ["Mango", "Banana", "Strawberry"]</span></span><br></pre></td></tr></table></figure>
+<h3 id="自定义排序-sort"><a href="#自定义排序-sort" class="headerlink" title="自定义排序 sort"></a>自定义排序 sort</h3><ol>
+<li>直接调用 <code>sort()</code> 方法会按 <strong>升序</strong> 重排数组项—最小的值位于最前面，最大的值排在最后面。</li>
+</ol>
+<p><strong>说明：</strong> 为了实现排序，<code>sort()</code> 方法会调用每个数组项的 <code>toString()</code> 转型方法，然后比较得到的字符串，以确定如何排序。即使数组中的每一项都是数值，<code>sort()</code> 方法也会先将其转化为字符串再进行比较。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">'Strawberry'</span>, <span class="string">'Banana'</span>, <span class="string">'Mango'</span>];</span><br><span class="line">fruits.sort();</span><br><span class="line"><span class="built_in">console</span>.log(fruits); <span class="comment">// ["Banana", "Mango", "Strawberry"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> values = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>];</span><br><span class="line">values.sort();</span><br><span class="line"><span class="built_in">console</span>.log(values); <span class="comment">// [0, 1, 10, 15, 5]</span></span><br></pre></td></tr></table></figure>
+<p>为什么 ‘10’ 和 ‘15’ 在 ‘5’ 前面？</p>
+<p><strong>注意：</strong> <code>sort()</code> 方法根据测试字符串的结果改变原来的顺序，虽然元素 5 小于 10，但在进行字符串比较时，’10’ 则位于 ‘5’ 的前面。</p>
+<ol>
+<li>传入排序函数 <code>sort(compare)</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> values = [<span class="number">0</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">18</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 此方法返回的是正序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (value1 &lt; value2) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value1 === value2) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">values.sort(compare);</span><br><span class="line"><span class="built_in">console</span>.log(values); <span class="comment">// [0, 1, 5, 8, 18]</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> <code>value1 &lt; value2</code> 返回 -1（负值） 表示正序，返回 1（正值） 表示倒序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此方法返回的是正序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value1 - value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数组连接"><a href="#数组连接" class="headerlink" title="数组连接"></a>数组连接</h2><p><code>concat()</code> 方法用于合并两个或多个数组；此方法不会更改现有数组，而是返回一个新数组。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>对象引用（非对象直接量）：<code>concat()</code> 方法会复制对象引用放到组合的新数组里，原数组和新数组中的对象引用都指向同一个实际的对象，所以当实际的对象被修改时，两个数组也同时会被修改。</li>
+<li>字符串和数字（是原始值，而不是包装原始值的 String 和 Number 对象）：<code>concat()</code> 方法会复制字符串和数字的值放到新数组里。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连接两个数组</span></span><br><span class="line"><span class="keyword">let</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>],</span><br><span class="line">  arr2 = [<span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr3 = arr1.concat(arr2);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr3); <span class="comment">// ["a", "b", "c", "d", "e", "f"] (results in a new array)</span></span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">// ["a", "b", "c"]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// ["d", "e", "f"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接多个数组</span></span><br><span class="line"><span class="keyword">let</span> num1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  num2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">  num3 = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nums = num1.concat(num2, num3); <span class="comment">// 组成新数组[1, 2, 3, 4, 5, 6, 7, 8, 9]; 原数组 num1, num2, num3 未被修改</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将非数组值合并到数组里</span></span><br><span class="line"><span class="keyword">let</span> alpha = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> alphaNumeric = alpha.concat(<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 组成新数组 ["a", "b", "c", 1, 2, 3], 原alpha数组未被修改</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-js/array.html" data-id="cjnvx9ydq001blxu6rghgsewo" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/a-js/bind-call-apply.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          bind call apply
+        
+      </div>
+    </a>
+  
+  
+    <a href="/a-git/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Git 常用命令</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+</body>
+</html>

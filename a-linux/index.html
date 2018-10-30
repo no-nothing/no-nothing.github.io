@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="baidu-site-verification" content="1mIt1OtUw3" />
+
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="Rocco&#39;s Blog" type="application/atom+xml">
+  
+
+  <!-- 为 IOS 上的 Safari 添加桌面图标 -->
+  <meta name="apple-mobile-web-app-title" content="Simple">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#333">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/icons/icon-128.png">
+
+  <!-- 为 Windows 添加磁片图标 -->
+  <meta name="msapplication-TileImage" content="/images/icons/icon-128.png">
+  <meta name="msapplication-TileColor" content="#ff0000">
+
+  <meta name="baidu-site-verification" content="MHqWnI2vxk">
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <title>Linux 基础与常用命令 | Rocco&#39;s Blog</title>
+  <meta name="description" content="JavaScript, ES6, CSS3, 前端笔记">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f5f5">
+</head>
+
+
+<body>
+  <div class="share-avatar">
+    <img class="avatar" src="/images/avatar.jpg" alt="头像">
+  </div>
+
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner" class="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Rocco&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">简简简简单</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <!--<a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>-->
+        
+        <a id="nav-github-btn" class="nav-icon" title="GitHub" href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer"></a>
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <!--<div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zh-rocco.github.io"></form>
+      </div>-->
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-a-linux/index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-linux/index.html" class="article-date">
+  <time datetime="2017-05-13T02:50:00.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux 基础与常用命令
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">命令行前的 [root@localhost ~]<span class="comment"># 是什么</span></span><br><span class="line"></span><br><span class="line">root:        当前登录用户</span><br><span class="line">localhost:   主机名</span><br><span class="line">~:           当前所在目录（家目录）</span><br><span class="line"><span class="comment">#:           超级用户的提示符（普通用户的提示符是$）</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Linux-文件权限"><a href="#Linux-文件权限" class="headerlink" title="Linux 文件权限"></a>Linux 文件权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- (其中, r: 读, w: 写, x: 执行)</span><br><span class="line">共10位</span><br><span class="line"></span><br><span class="line">第1位:     文件类型(共7种, 常用3种 -: 文件, d: 目录, l: 快捷方式)</span><br><span class="line">第2~4位:   所有者(u)权限</span><br><span class="line">第5~7位:   所属组(g)权限</span><br><span class="line">第8~10位:  其他人(o)权限</span><br></pre></td></tr></table></figure>
+<h2 id="Shell-和-Bash"><a href="#Shell-和-Bash" class="headerlink" title="Shell 和 Bash"></a>Shell 和 Bash</h2><h3 id="1-常用快捷键"><a href="#1-常用快捷键" class="headerlink" title="1. 常用快捷键"></a>1. 常用快捷键</h3><ul>
+<li><code>ctrl+c</code>    强制终止当前命令；</li>
+<li><code>ctrl+l</code>    清屏；</li>
+<li><code>ctrl+a</code>    光标移动到命令行首；</li>
+<li><code>ctrl+e</code>    光标移动到命令行尾；</li>
+<li><code>ctrl+u</code>    从光标所在位置删除到行首；</li>
+<li><code>ctrl+z</code>    把命令放入后台；</li>
+<li><code>ctrl+r</code>    在历史命令中 搜索；</li>
+<li><code>Tab</code> 自动补全目录或者命令</li>
+</ul>
+<h3 id="2-历史命令"><a href="#2-历史命令" class="headerlink" title="2. 历史命令"></a>2. 历史命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">history</span> &lt;选项&gt; &lt;历史命令保存文件&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>&lt;选项&gt;：</strong></p>
+<ul>
+<li>-c：清空历史命令；</li>
+<li>-w：把缓存中的历史命令写入历史命令保存文件   /root/.bash_history</li>
+</ul>
+<p><code>cat .bash_history</code> 可以查看这个文件，默认关机时会执行 <code>history -w</code> 命令；</p>
+<p>历史命令默认保存 1000 条，可以在环境变量配置文件 /etc/profile 中进行修改，修改 <code>HISTSIZE</code> 的值；</p>
+<p><code>!n</code>   可以重复执行 history 里第 n 条命令；</p>
+<p><code>!!</code>   重复执行上一条命令；</p>
+<p><code>!字符串</code>   重复执行最后一条已该字符串开头的命令；</p>
+<h3 id="3-输出重定向（很有用）"><a href="#3-输出重定向（很有用）" class="headerlink" title="3. 输出重定向（很有用）"></a>3. 输出重定向（很有用）</h3><p><code>date &gt; date.log</code>   将时间信息输入到 date.log 文件中，而不是显示输出；</p>
+<p><code>date &gt;&gt; date.log</code> 将时间信息追加到  date.log 文件中，而 &gt; 是覆盖；</p>
+<p><code>date &amp;&gt;&gt; date.log</code> 同时保存正确和错误信息，如果有错误信息；</p>
+<p><code>date &gt;&gt; date.log 2&gt;&gt; error.log</code> 保存正确信息到 date.log，保存错误信息到 error.log；</p>
+<h3 id="4-输入重定向"><a href="#4-输入重定向" class="headerlink" title="4. 输入重定向"></a>4. 输入重定向</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc &lt;选项&gt; &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>&lt;选项&gt;：</strong></p>
+<ul>
+<li>-c：统计字节数；</li>
+<li>-w：统计单词数；</li>
+<li>-l：   统计行数；</li>
+</ul>
+<p>例如：<code>wc &lt; date.log</code> 或者直接 <code>wc date.log</code> 统计 date.log 文件里的字节数、单词数、行数；</p>
+<h3 id="5-管道符"><a href="#5-管道符" class="headerlink" title="5. 管道符"></a>5. 管道符</h3><p><strong>多命令顺序执行：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令1 ;  命令2    多个命令顺序执行，命令之间没有任何逻辑联系</span><br><span class="line">命令1 &amp;&amp; 命令2    逻辑与，只有当命令1正确执行，则执行命令2</span><br><span class="line">命令1 || 命令2    逻辑或，只有当命令1执行不正确，才执行命令2</span><br></pre></td></tr></table></figure>
+<p><strong>管道符：（命令 1 和 2 有数据传递）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令1的正确输出作为命令2的操作对象</span></span><br><span class="line">命令1 | 命令2</span><br></pre></td></tr></table></figure>
+<h3 id="6-通配符"><a href="#6-通配符" class="headerlink" title="6. 通配符"></a>6. 通配符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?      ：匹配一个任意字符；</span><br><span class="line">*      ：匹配0个或任意多个任意字符，也就是可以匹配任何内容；</span><br><span class="line">[ ]    ：匹配中括号内的任意一个字符，例如：[abc] 代表一定匹配一个字符，或者是a、或者是b、或者是c；</span><br><span class="line">[ - ]  ：匹配中括号内的任意一个字符，- 代表一个范围，例如：[a-z] 代表匹配一个小写字母；</span><br><span class="line">[ ^ ]  ：逻辑非，表示匹配不是中括号内的一个字符，例如：[^0-9] 代表匹配一个不是数字的字符；</span><br></pre></td></tr></table></figure>
+<h3 id="7-第一个脚本"><a href="#7-第一个脚本" class="headerlink" title="7. 第一个脚本"></a>7. 第一个脚本</h3><p><strong>a. 首先新建并打开一个文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim hello.sh</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi hello.sh</span><br></pre></td></tr></table></figure>
+<p><strong>b. 然后编辑内容</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash            脚本开头必须内容</span></span><br><span class="line"><span class="comment">#The first program     注释</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"hello"</span></span><br></pre></td></tr></table></figure>
+<p><strong>c. 脚本执行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 赋予脚本执行权限，直接运行</span></span><br><span class="line">chmod 755 hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后相对路径调用</span></span><br><span class="line">./hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者绝对路径调用</span></span><br><span class="line">/root/hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者通过 Bash 调用执行脚本</span></span><br><span class="line">bash hello.sh</span><br></pre></td></tr></table></figure>
+<h2 id="目录切换与查询"><a href="#目录切换与查询" class="headerlink" title="目录切换与查询"></a>目录切换与查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入当前用户的家目录，命令英文原意：change directory</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入上次目录</span></span><br><span class="line"><span class="built_in">cd</span> -</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入上一级目录</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入当前目录（比 cd .. 少一个 .）</span></span><br><span class="line"><span class="built_in">cd</span> .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入根目录</span></span><br><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询所在目录位置，命令英文原意：print working directory</span></span><br><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+<p><strong>补充：Linux 目录说明</strong></p>
+<ul>
+<li>根目录下的 <code>bin</code> 和 <code>sbin</code>、<code>usr</code> 目录下的 <code>bin</code> 和 <code>sbin</code>，这四个目录都是用来保存系统命令的；<br><code>bin</code> 下的命令所用用户都可以执行，而 <code>sbin</code> 下的命令只有超级用户才可以执行。</li>
+<li><code>dev</code> 目录内是一些硬件文件，没事别动。</li>
+<li><code>etc</code> 目录下是系统的默认配置文件。</li>
+<li><code>lib</code> 目录下是函数库，用的时候可以调用，不用就没必要调用，这样可以避免 Linux 变得臃肿。</li>
+<li><code>proc</code> 和 <code>sys</code> 目录不能直接操作，这两个目录保存的是内存的挂载点，也就是内存的盘符。</li>
+<li><code>tmp</code> 是临时目录。</li>
+<li><code>var</code> 保存系统的可变文档目录。</li>
+</ul>
+<h2 id="显示目录下的文件"><a href="#显示目录下的文件" class="headerlink" title="显示目录下的文件"></a>显示目录下的文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls &lt;选项&gt; &lt;文件或目录&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>&lt;选项&gt;：</strong></p>
+<ul>
+<li><code>-a</code>   显示所有文件，包括隐藏文件</li>
+<li><code>-l</code>   显示详细信息（<code>ll</code> = <code>ls -l</code>）</li>
+<li><code>-d</code>   查看目录属性</li>
+<li><code>-h</code>   人性化显示文件大小</li>
+<li><code>-i</code>    显示 inode，查看 id 号</li>
+</ul>
+<h2 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取指定命令的帮助，manual（手册）缩写</span></span><br><span class="line">man &lt;命令&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询shell命令，如 cd</span></span><br><span class="line"><span class="built_in">help</span> &lt;命令&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="查看用户登录信息"><a href="#查看用户登录信息" class="headerlink" title="查看用户登录信息"></a>查看用户登录信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 详细信息</span></span><br><span class="line">w</span><br><span class="line"></span><br><span class="line"><span class="comment"># 简洁信息</span></span><br><span class="line">who</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询当前登录和过去登陆的用户信息</span></span><br><span class="line">last</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询所有用户的最后一次登录时间</span></span><br><span class="line">lastlog</span><br></pre></td></tr></table></figure>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir &lt;目录名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归创建，在没有 xiaomi 目录的前提下创建 xiaomi/redmi 必须加 -p</span></span><br><span class="line">mkdir -p xiaomi/redmi</span><br></pre></td></tr></table></figure>
+<h3 id="目录复制"><a href="#目录复制" class="headerlink" title="目录复制"></a>目录复制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式</span></span><br><span class="line">cp &lt;选项&gt; &lt;原文件或目录&gt; &lt;目标目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连带文件属性复制</span></span><br><span class="line">cp -p &lt;原文件或目录&gt; &lt;目标目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若原文件是链接文件，则复制链接属性</span></span><br><span class="line">cp -d &lt;原文件或目录&gt; &lt;目标目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制目录</span></span><br><span class="line">cp -r &lt;原文件或目录&gt; &lt;目标目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相当于 -pdr</span></span><br><span class="line">cp -a &lt;原文件或目录&gt; &lt;目标目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把 folder1 里面的文件和文件夹等复制到 folder2 目录下</span></span><br><span class="line">cp -rf folder1/* folder2</span><br></pre></td></tr></table></figure>
+<h3 id="目录移动"><a href="#目录移动" class="headerlink" title="目录移动"></a>目录移动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把 folder1 里面的文件和文件夹等移动到 folder2 目录下</span></span><br><span class="line">mv folder1/* folder2</span><br></pre></td></tr></table></figure>
+<h3 id="目录重命名"><a href="#目录重命名" class="headerlink" title="目录重命名"></a>目录重命名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把 folder1 重命名为 folder2</span></span><br><span class="line">mv folder1 folder2</span><br></pre></td></tr></table></figure>
+<h3 id="文件-目录删除"><a href="#文件-目录删除" class="headerlink" title="文件/目录删除"></a>文件/目录删除</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除文件</span></span><br><span class="line">rm &lt;文件名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除目录</span></span><br><span class="line">rm -rf &lt;目录名&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>参考:</strong></p>
+<ol>
+<li><a href="http://blog.csdn.net/numbibi/article/details/8026841" target="_blank" rel="noopener">linux 下文件夹的创建、复制、剪切、重命名、清空和删除命令</a></li>
+</ol>
+<h2 id="创建软链"><a href="#创建软链" class="headerlink" title="创建软链"></a>创建软链</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式</span></span><br><span class="line">ln -s &lt;原文件&gt; &lt;目标文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建软链</span></span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/nginx/sbin/nginx /usr/bin/nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除软链</span></span><br><span class="line">rm 软链</span><br></pre></td></tr></table></figure>
+<h2 id="搜索文件-命令-字符串"><a href="#搜索文件-命令-字符串" class="headerlink" title="搜索文件/命令/字符串"></a>搜索文件/命令/字符串</h2><h3 id="搜索文件"><a href="#搜索文件" class="headerlink" title="搜索文件"></a>搜索文件</h3><h4 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在后台数据库中按文件名搜索，搜索速度快</span></span><br><span class="line"><span class="comment"># 注意：locate命令搜索的是后台数据库，新建的文件需要 updatedb 后才能搜索到（因为，mlocate 数据库并不是实时更新）</span></span><br><span class="line">locate &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 耗费资源，比较慢，但是功能非常强大</span></span><br><span class="line"><span class="comment"># 注意：避免大范围的搜索</span></span><br><span class="line">find &lt;搜索范围&gt; &lt;搜索条件&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>搜索条件：</strong></p>
+<ul>
+<li><code>-name</code>： 按文件名索搜，只显示文件名一模一样的文件</li>
+<li><code>-iname</code>： 不区分大小写</li>
+</ul>
+<p><strong>通配符：</strong>（放在搜索格式结尾）</p>
+<ul>
+<li><code>*</code>： 匹配任意内容</li>
+<li><code>?</code>： 匹配任意一个字符</li>
+<li><code>[]</code>： 匹配任意一个中括号内的字符</li>
+<li><code>-user &lt;用户名&gt;</code>： 按照所有者搜索</li>
+<li><code>-nouser</code>： 查找没有所有者的文件</li>
+<li><code>-mtime &lt;num&gt;</code>： 修改文件内容时间</li>
+<li><code>-atime &lt;num&gt;</code>： 文件访问时间</li>
+<li><code>-ctime &lt;num&gt;</code>： 改变文件属性时间<ul>
+<li><code>-10</code>： 10 天内修改的文件</li>
+<li><code>10</code>： 10 天当天修改的文件</li>
+<li><code>+10</code>： 10 天前修改的文件；</li>
+</ul>
+</li>
+<li><code>-size &lt;num&gt;</code>： 按文件大小查找<ul>
+<li><code>-10k</code>： 小于 10KB 的文件 /  <code>-10M</code>：小于 10MB 的文件（注意大小写）</li>
+<li><code>10k</code>： 等于 10KB 的文件</li>
+<li><code>+10k</code>： 大于 10KB 的文件；</li>
+</ul>
+</li>
+<li><code>-inum &lt;节点数&gt;</code>： 按 i 节点查找；（<code>ls -i</code> 查看文件的 i 节点）</li>
+</ul>
+<p><strong>例子：</strong><br><code>find /etc -size +20k -a -size -50k -exec ls -lh {} \</code></p>
+<p><strong>解释：</strong></p>
+<ul>
+<li>查找 <code>/etc</code> 目录下大于 20KB 小于 50KB 的文件，</li>
+<li><code>-a</code>： and   逻辑与，两个条件都满足，</li>
+<li><code>-o</code>： or 逻辑或，两个条件满足一个即可，</li>
+<li><code>-exec &lt;命令&gt; {} \</code>： 对搜索结果执行操作；</li>
+</ul>
+<h3 id="搜索命令"><a href="#搜索命令" class="headerlink" title="搜索命令"></a>搜索命令</h3><h4 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 搜索命令所在路径以及帮助文档所在位置</span></span><br><span class="line">whereis &lt;选项&gt; &lt;命令名&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>选项：</strong></p>
+<ul>
+<li><code>-b</code>：   只查找可执行文件；</li>
+<li><code>-m</code>： 只查找帮助文件；</li>
+</ul>
+<h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 搜索命令的所在位置以及命令的别名（如果有的话，pwd 便没有别名）</span></span><br><span class="line"><span class="comment"># 注意：whereis 和 which 无法搜索到 cd 命令，因为 cd 命令是 shell 自带的命令</span></span><br><span class="line"><span class="built_in">which</span> &lt;命令名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="搜索字符串"><a href="#搜索字符串" class="headerlink" title="搜索字符串"></a>搜索字符串</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在文件当中匹配符合条件的字符串</span></span><br><span class="line">grep &lt;选项&gt; &lt;字符串&gt; &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>选项：</strong></p>
+<ul>
+<li><code>-i</code>：   忽略大小写；</li>
+<li><code>-v</code>： 排除指定字符串，也就是取反；</li>
+</ul>
+<h2 id="压缩与解压"><a href="#压缩与解压" class="headerlink" title="压缩与解压"></a>压缩与解压</h2><h3 id="zip-格式压缩（可以压缩目录和文件）"><a href="#zip-格式压缩（可以压缩目录和文件）" class="headerlink" title=".zip 格式压缩（可以压缩目录和文件）"></a>.zip 格式压缩（可以压缩目录和文件）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩文件，原文件保留</span></span><br><span class="line">zip &lt;压缩文件名&gt; &lt;原文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 压缩目录，原目录保留</span></span><br><span class="line">zip -r &lt;压缩文件名&gt; &lt;原文件夹&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩 .zip 文件，原文件保留，解压后默认和压缩文件保存在同一目录</span></span><br><span class="line">unzip &lt;原文件&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gz-格式压缩（可以压缩目录和文件）"><a href="#gz-格式压缩（可以压缩目录和文件）" class="headerlink" title=".gz 格式压缩（可以压缩目录和文件）"></a>.gz 格式压缩（可以压缩目录和文件）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩为 .gz 格式的文件，原文件会消失</span></span><br><span class="line">gzip &lt;原文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 压缩为 .gz 格式的文件，原文件保留</span></span><br><span class="line">gzip -c &lt;原文件&gt; &gt; &lt;压缩文件&gt;</span><br><span class="line"><span class="comment"># 例如</span></span><br><span class="line">gzip -c meizu &gt; meizu.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 压缩目录下所有的子文件，但是不能压缩目录，原文件会消失</span></span><br><span class="line">gzip -r &lt;目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩文件，原文件会消失</span></span><br><span class="line">gzip -d &lt;压缩文件名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩文件，原文件会消失</span></span><br><span class="line">gunzip &lt;压缩文件名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="bz2-格式压缩（只可以压缩文件）"><a href="#bz2-格式压缩（只可以压缩文件）" class="headerlink" title=".bz2 格式压缩（只可以压缩文件）"></a>.bz2 格式压缩（只可以压缩文件）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩为 .bz2 格式的文件，原文件会消失</span></span><br><span class="line">bzip2 &lt;原文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 压缩为 .bz2 格式的文件，原文件保留</span></span><br><span class="line">bzip2 -k &lt;原文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩文件，原文件会消失；（加 -k 可以保存）</span></span><br><span class="line">bzip2 -d &lt;压缩文件名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩文件，原文件会消失；（加 -k 可以保存）</span></span><br><span class="line">bunzip2 &lt;压缩文件名&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="打包命令-tar（会保留原文件）"><a href="#打包命令-tar（会保留原文件）" class="headerlink" title="打包命令 tar（会保留原文件）"></a>打包命令 tar（会保留原文件）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打包</span></span><br><span class="line">tar -cvf &lt;打包文件名&gt; &lt;原文件&gt;</span><br><span class="line"><span class="comment"># 例如</span></span><br><span class="line">tar -cfg meizu.tar meizu</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解打包</span></span><br><span class="line">tar -xvf &lt;打包文件名&gt;</span><br><span class="line"><span class="comment"># 例如</span></span><br><span class="line">tar -xvf meizu.tar</span><br></pre></td></tr></table></figure>
+<p><strong>选项：</strong></p>
+<ul>
+<li><code>-c</code>：   打包</li>
+<li><code>-v</code>：   显示过程</li>
+<li><code>-f</code>：   指定打包后的文件名</li>
+<li><code>-x</code>：   解打包</li>
+</ul>
+<h3 id="tar-gz-格式压缩（可以压缩目录和文件）（会保留原文件）"><a href="#tar-gz-格式压缩（可以压缩目录和文件）（会保留原文件）" class="headerlink" title=".tar.gz 格式压缩（可以压缩目录和文件）（会保留原文件）"></a>.tar.gz 格式压缩（可以压缩目录和文件）（会保留原文件）</h3><p>其实 <code>.tar.gz</code> 格式是先打包为 <code>.tar</code> 格式，再压缩为 <code>.gz</code> 格式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 同时将两个文件打包压缩到一个压缩文件下</span></span><br><span class="line">tar -zcvf &lt;压缩包名.tar.gz&gt; &lt;原文件&gt; (&lt;另一个原文件&gt;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩 .tar.gz 格式的文件</span></span><br><span class="line">tar -zxvf &lt;压缩包名.tar.gz&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>选项：</strong></p>
+<ul>
+<li><code>-c</code>：   压缩为 <code>.tar.gz</code> 格式</li>
+<li><code>-x</code>：   解压缩 <code>.tar.gz</code> 格式的文件</li>
+</ul>
+<h3 id="tar-bz2-格式压缩（可以压缩目录和文件）（会保留原文件）"><a href="#tar-bz2-格式压缩（可以压缩目录和文件）（会保留原文件）" class="headerlink" title=".tar.bz2 格式压缩（可以压缩目录和文件）（会保留原文件）"></a>.tar.bz2 格式压缩（可以压缩目录和文件）（会保留原文件）</h3><p>其实 .tar.bz2 格式是先打包为 .tar 格式，再压缩为 .bz2 格式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩</span></span><br><span class="line">tar -jcvf &lt;压缩包名.tar.bz2&gt; &lt;原文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -jxvf &lt;压缩包名.tar.bz2&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩到指定目录</span></span><br><span class="line">tar -jxvf &lt;压缩包名.tar.bz2&gt; -C &lt;其他目录&gt;</span><br><span class="line"><span class="comment"># 例如</span></span><br><span class="line">tar -jxvf meizu.tar.bz2 -C /tmp/；</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只查看里面的内容，而不解压</span></span><br><span class="line">tar -jtvf &lt;压缩包名.tar.bz2&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>选项：</strong></p>
+<ul>
+<li><code>-j</code>：   压缩为 <code>.tar.bz2</code> 格式</li>
+<li><code>-x</code>：   解压缩 <code>.tar.bz2</code> 格式的文件</li>
+<li><code>-t</code>：   查看里面的内容</li>
+</ul>
+<h2 id="查询和挂载"><a href="#查询和挂载" class="headerlink" title="查询和挂载"></a>查询和挂载</h2><h3 id="查询命令"><a href="#查询命令" class="headerlink" title="查询命令"></a>查询命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询系统中已经挂载的设备</span></span><br><span class="line">mount</span><br><span class="line"></span><br><span class="line"><span class="comment"># 依据配置我文件 /etc/fstab 的内容自动挂载</span></span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure>
+<h3 id="挂载命令"><a href="#挂载命令" class="headerlink" title="挂载命令"></a>挂载命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount &lt;-t 文件系统&gt; &lt;-o 特殊选项&gt; &lt;设备文件名&gt; &lt;挂载点&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>&lt;选项&gt;：</strong></p>
+<ul>
+<li><code>-t</code> 文件系统：加入文件系统类型来指定挂在的类型，可以 ext3、ext4、iso9660 等文件系统；</li>
+<li><code>-o</code> 特殊选项：可以制定挂载的额外选项；</li>
+</ul>
+<h3 id="挂载光盘"><a href="#挂载光盘" class="headerlink" title="挂载光盘"></a>挂载光盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立挂载点</span></span><br><span class="line">mkdir /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载光盘（推荐使用 sr0）</span></span><br><span class="line">mount -t iso9660 /dev/sr0 /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="comment"># 挂载光盘（cdrom 和 sr0 是软链接关系）</span></span><br><span class="line">mount -t iso9660 /dev/cdrom /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="comment"># 挂载光盘（简写）</span></span><br><span class="line">mount /dev/sr0 /mnt/cdrom</span><br></pre></td></tr></table></figure>
+<h3 id="卸载光盘命令（挂载后必须卸载）"><a href="#卸载光盘命令（挂载后必须卸载）" class="headerlink" title="卸载光盘命令（挂载后必须卸载）"></a>卸载光盘命令（挂载后必须卸载）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">umount &lt;设备文件名或挂载点&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过文件名卸载光盘</span></span><br><span class="line">umount /dev/sr0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="comment"># 通过挂载点卸载光盘</span></span><br><span class="line">umount /mnt/cdrom</span><br></pre></td></tr></table></figure>
+<h3 id="挂载-U-盘"><a href="#挂载-U-盘" class="headerlink" title="挂载 U 盘"></a>挂载 U 盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看U盘设备文件名</span></span><br><span class="line">fdisk -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立挂载点</span></span><br><span class="line">mkdir /mnt/usb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载U盘</span></span><br><span class="line">mount -t vfat /dev/ &lt;U盘设备文件名&gt; /mnt/usb</span><br></pre></td></tr></table></figure>
+<h2 id="关机-重启-退出登录"><a href="#关机-重启-退出登录" class="headerlink" title="关机 / 重启 / 退出登录"></a>关机 / 重启 / 退出登录</h2><h3 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安全，关机时会正确保存正在运行的任务</span></span><br><span class="line">shutdown -h now</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">halt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">poweroff</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">init 0</span><br></pre></td></tr></table></figure>
+<h3 id="重启命令"><a href="#重启命令" class="headerlink" title="重启命令"></a>重启命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r now</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">init 6</span><br></pre></td></tr></table></figure>
+<h3 id="退出登录命令"><a href="#退出登录命令" class="headerlink" title="退出登录命令"></a>退出登录命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">logout</span></span><br></pre></td></tr></table></figure>
+<h2 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h2><h3 id="Systemd-常用命令："><a href="#Systemd-常用命令：" class="headerlink" title="Systemd 常用命令："></a>Systemd 常用命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 立即激活单元</span></span><br><span class="line">systemctl start &lt;单元&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 立即停止单元：</span></span><br><span class="line">systemctl stop &lt;单元&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启单元：</span></span><br><span class="line">systemctl restart &lt;单元&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新加载配置：</span></span><br><span class="line">systemctl reload &lt;单元&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出单元运行状态：</span></span><br><span class="line">systemctl status &lt;单元&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查单元是否配置为自动启动：</span></span><br><span class="line">systemctl is-enabled &lt;单元&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开机自动激活单元：</span></span><br><span class="line">systemctl <span class="built_in">enable</span> &lt;单元&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消开机自动激活单元：</span></span><br><span class="line">systemctl <span class="built_in">disable</span> &lt;单元&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>参考:</strong></p>
+<ol>
+<li><a href="https://wiki.archlinux.org/index.php/Systemd" target="_blank" rel="noopener">systemd-ArchWiki</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener">Systemd 入门教程：命令篇</a></li>
+</ol>
+<h3 id="Nginx-常用命令："><a href="#Nginx-常用命令：" class="headerlink" title="Nginx 常用命令："></a>Nginx 常用命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nginx 启动</span></span><br><span class="line"><span class="comment"># 其中参数 -c 指定 nginx 启动时加载的配置文件，当然也可以不指定配置文件，省略 -c，也可以启动，表示使用默认的配置文件</span></span><br><span class="line">nginx -c /etc/nginx/nginx.conf</span><br><span class="line"><span class="comment"># OR</span></span><br><span class="line">nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># nginx 停止</span></span><br><span class="line"><span class="comment"># 例如在我们的编辑环境中已经安装好了 nginx，并且已启动，在命令提示符下直接输入 nginx -s stop 就可以停止了</span></span><br><span class="line">nginx -s stop</span><br><span class="line"><span class="comment"># OR</span></span><br><span class="line">nginx -s quit</span><br><span class="line"><span class="comment"># OR</span></span><br><span class="line">pkill -9 nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># nginx 重载配置</span></span><br><span class="line">nginx -s reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查配置文件是否正确</span></span><br><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+<p><strong>参考:</strong></p>
+<ol>
+<li><a href="https://wiki.archlinux.org/index.php/Systemd" target="_blank" rel="noopener">systemd-ArchWiki</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener">Systemd 入门教程：命令篇</a></li>
+</ol>
+<h3 id="firewalld-常用命令："><a href="#firewalld-常用命令：" class="headerlink" title="firewalld 常用命令："></a>firewalld 常用命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">firewall-cmd --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取 firewalld 状态</span></span><br><span class="line">firewall-cmd --state</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看开启的端口列表</span></span><br><span class="line">firewall-cmd --list-ports</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 public 下开启的端口列表</span></span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 firewalld</span></span><br><span class="line">systemctl start firewalld.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启 firewalld</span></span><br><span class="line">systemctl restart firewalld.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开机自启 firewalld</span></span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭开机自启 firewalld</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># firewalld 默认会关闭所有端口访问</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启 80 端口(此时只有 80 端口可以访问)</span></span><br><span class="line"><span class="comment"># --permanent 永久</span></span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用https服务</span></span><br><span class="line">firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启 443 端口(https)</span></span><br><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新加载防火墙，生效新添的规则</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zh-rocco.github.io/a-linux/index.html" data-id="cjnvx9yet003ulxu6esyojfsr" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/a-css/snippet.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          常用 CSS 片段
+        
+      </div>
+    </a>
+  
+  
+    <a href="/a-css/common.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">CSS 基础</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angular/">Angular</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Common/">Common</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWA/">PWA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WeiXin/">WeiXin</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/apply/" style="font-size: 10px;">apply</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bash/" style="font-size: 10px;">bash</a> <a href="/tags/bind/" style="font-size: 10px;">bind</a> <a href="/tags/bookmark/" style="font-size: 10px;">bookmark</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/cross-origin/" style="font-size: 10px;">cross-origin</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/firewall/" style="font-size: 10px;">firewall</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/lrzsz/" style="font-size: 10px;">lrzsz</a> <a href="/tags/manifest/" style="font-size: 10px;">manifest</a> <a href="/tags/move/" style="font-size: 10px;">move</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/pm2/" style="font-size: 10px;">pm2</a> <a href="/tags/pwa/" style="font-size: 20px;">pwa</a> <a href="/tags/regex/" style="font-size: 10px;">regex</a> <a href="/tags/service-worker/" style="font-size: 10px;">service worker</a> <a href="/tags/systemctl/" style="font-size: 10px;">systemctl</a> <a href="/tags/webstorm/" style="font-size: 10px;">webstorm</a> <a href="/tags/window/" style="font-size: 10px;">window</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/a-common/move.html">博客迁移</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/caches.html">Cache API</a>
+          </li>
+        
+          <li>
+            <a href="/a-js/fetch.html">Fetch API</a>
+          </li>
+        
+          <li>
+            <a href="/a-pwa/manifest.html">应用清单 - PWA</a>
+          </li>
+        
+          <li>
+            <a href="/a-common/bookmark.html">书签</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">友情链接</h3>
+  <div class="widget">
+    <ul>
+      
+      <li>
+        <a href="http://www.yedanbo.com/" target="_blank" rel="nofollow me noopener noreferrer">叶丹波</a>
+      </li>
+      
+      <li>
+        <a href="https://kongwz.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Kelo</a>
+      </li>
+      
+      <li>
+        <a href="https://colorfulWorld.github.io/" target="_blank" rel="nofollow me noopener noreferrer">Eternal</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018
+      <a href="https://github.com/zh-rocco" target="_blank" rel="nofollow me noopener noreferrer">Rocco</a>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank" rel="nofollow me noopener noreferrer">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+
+    
+
+<!-- <script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script> -->
+
+<script src="/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+
+  
+</body>
+</html>
